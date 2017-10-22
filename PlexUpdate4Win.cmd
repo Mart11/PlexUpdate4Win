@@ -100,8 +100,9 @@ goto :continue-install
 powershell -command .\Download-Installer.ps1
 :continue-install
 echo Installing newer version: %LASTVER% ...
-:: First stop PMS, then run update
+:: First stop PMS and all Plex processes, then run update
 taskkill /F /IM "Plex Media Server.exe" /T
+for /F %%a in ('tasklist ^| find "plex"') do taskkill /F /IM "%%a" /T
 "%DOWNROOT%\%LASTVERSETUP%" /install /quiet
 echo Finished
 :: Send email about new installed version (optional, in default enabled)

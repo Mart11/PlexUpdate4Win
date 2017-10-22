@@ -33,14 +33,15 @@ add-type @"
 "@
 [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
 
+$myplexcredenials = $myplexaccount + ":" + $mypassword
 $url = "https://plex.tv/users/sign_in.xml"
-$BB = [System.Text.Encoding]::UTF8.GetBytes(""$myplexaccount":"$mypassword"")
+$BB = [System.Text.Encoding]::UTF8.GetBytes("$myplexcredenials")
 $EncodedPassword = [System.Convert]::ToBase64String($BB)
 $headers = @{}
-$headers.Add("Authorization","Basic $($EncodedPassword)") | out-null
+$headers.Add("Authorization","Basic $($EncodedPassword)") | Out-null
 $headers.Add("X-Plex-Client-Identifier","PLEXUPDATE4WIN") | Out-Null
 $headers.Add("X-Plex-Product","PlexUpdate4Win script") | Out-Null
-$headers.Add("X-Plex-Version","V1") | Out-Null
+$headers.Add("X-Plex-Version","V1.1") | Out-Null
 [xml]$res = Invoke-RestMethod -Headers:$headers -Method Post -Uri:$url
 $token = $res.user.authenticationtoken
 echo $token >> $TokenLog
