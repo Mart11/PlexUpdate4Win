@@ -1,6 +1,11 @@
 @echo off
 
+:::::::::::::::::::::::::::::: Settings ::::::::::::::::::::::::::::::::::::::
+:: Check and set the path according to your environment
 set PVR="C:\Program Files (x86)\Plex\Plex Media Server\Plex Tuner Service.exe"
+
+::::::::::::::::::::::::::::: Main Script ::::::::::::::::::::::::::::::::::::
+:: Usually you don't need to change anything here
 
 :CHECK
 if exist %PVR% (
@@ -10,7 +15,7 @@ if exist %PVR% (
 )
 
 :RENAME
-move /y %PVR% "C:\Program Files (x86)\Plex\Plex Media Server\Plex Tuner Service.disabled" >nul
+for /F "delims=." %%a in (%PVR%) do move /y %PVR% "%%a.disable" >nul
 echo Plex PVR Disabled
 goto:eof
 

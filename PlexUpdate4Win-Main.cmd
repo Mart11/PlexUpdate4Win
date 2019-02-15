@@ -1,4 +1,6 @@
 @echo off
+:: A NOTICE:
+:: To run the PlexUpdate4Win see/run the PlexUpdate4Win.cmd file as a first!
 
 ::::::::::::::::::::::::::::: Main Script ::::::::::::::::::::::::::::::::::::
 :: Usually you don't need to change anything here

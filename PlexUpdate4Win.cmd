@@ -1,6 +1,14 @@
 @echo off
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-:: A helper CMD script for running mail PlexUpdate4Win.cmd script with loging
+:: A "run-me-first" CMD script for running the whole PlexUpdate4Win with
+:: all necessary settings.
+:: 
+:: Schedule to run this script regularly after all settings were made:
+::     1. in this file bellow
+::     2. in Download-Installer.ps1 (path for packages, optional PlexPass token)
+::     3. in Get-Installer-Version.ps1 (optional PlexPass token)
+::     4. in SendMail.ps1 (email settings)
+::     5. in DisablePVR.cmd (path to EXE, if disabling is wanted)
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::: Settings ::::::::::::::::::::::::::::::::::::::
@@ -17,7 +25,7 @@ set LOG=yes
 :: Disable Plex DVR after updating? (yes:no)
 set DVR=yes
 
-:: Update patch root folder 
+:: Path to PMS installation with the main EXE 
 set PMSEXE=C:\\Program Files (x86)\\Plex\\Plex Media Server\\Plex Media Server.exe
 :: Update patch root folder 
 set UPDATEROOT=C:\Users\%username%\AppData\Local\Plex Media Server\Updates

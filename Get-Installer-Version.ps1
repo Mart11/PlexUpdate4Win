@@ -26,7 +26,7 @@ add-type @"
 [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
 
 # Fetching info from JSON file
-$url = "https://plex.tv/api/downloads/1.json?channel=plexpass"
+$url = "https://plex.tv/api/downloads/5.json?channel=plexpass"
 $headers = @{}
 $headers.Add("X-Plex-Token","$token") | Out-Null 
 $res = Invoke-RestMethod -Headers:$headers -Method Get -Uri:$url -ContentType 'application/json'
