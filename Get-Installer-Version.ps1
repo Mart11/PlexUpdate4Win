@@ -8,6 +8,8 @@
 # If token is empty or doesn't work, Public channel version will be fetched
 $token = "PUT-YOUR-PLEXPASS-TOKEN-HERE"
 
+# Package build architecture settings (windows-x86 or windows-x86_64)
+$build = "windows-x86_64"
 
 ############################### Main Script ##################################
 # Usually you don't need to change anything below here
@@ -31,7 +33,7 @@ $headers = @{}
 $headers.Add("X-Plex-Token","$token") | Out-Null 
 $res = Invoke-RestMethod -Headers:$headers -Method Get -Uri:$url -ContentType 'application/json'
 $version = $res.computer.Windows.version
-$package = $res.computer.Windows.releases.url
+$package = $res.computer.Windows.releases.Where({ $_.build -eq $build }).url
 echo "$version"
 
 ##############################################################################
