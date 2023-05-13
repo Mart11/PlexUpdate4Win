@@ -13,6 +13,8 @@ $token = "PUT-YOUR-PLEXPASS-TOKEN-HERE"
 # Download folder settings, set it to the same path as you did for "DOWNROOT" in main PlexUpdate4Win.cmd
 $DownloadFolder = "<PATH TO>\PlexUpdate4Win\packages"
 
+# Package build architecture settings (windows-x86 or windows-x86_64)
+$build = "windows-x86_64"
 
 ############################### Main Script ##################################
 # Usually you don't need to change anything below here
@@ -36,7 +38,7 @@ $headers = @{}
 $headers.Add("X-Plex-Token","$token") | Out-Null 
 $res = Invoke-RestMethod -Headers:$headers -Method Get -Uri:$url -ContentType 'application/json'
 $version = $res.computer.Windows.version
-$package = $res.computer.Windows.releases.url
+$package = $res.computer.Windows.releases.Where({ $_.build -eq $build }).url
 echo "Downloading Installer..."
 if(!(Test-Path -Path $DownloadFolder )){
     New-Item -ErrorAction Ignore -ItemType directory -Path $DownloadFolder
