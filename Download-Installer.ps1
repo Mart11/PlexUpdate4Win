@@ -13,7 +13,7 @@ $token = "PUT-YOUR-PLEXPASS-TOKEN-HERE"
 # Download folder settings, set it to the same path as you did for "DOWNROOT" in main PlexUpdate4Win.cmd
 $DownloadFolder = "<PATH TO>\PlexUpdate4Win\packages"
 
-# Package build architecture settings (windows-x86 or windows-x86_64)
+# Package build architecture settings (windows-x86 or windows-x86_64) 
 $build = "windows-x86"
 
 ############################### Main Script ##################################
