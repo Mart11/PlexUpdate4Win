@@ -14,7 +14,7 @@ $token = "PUT-YOUR-PLEXPASS-TOKEN-HERE"
 $DownloadFolder = "<PATH TO>\PlexUpdate4Win\packages"
 
 # Package build architecture settings (windows-x86 or windows-x86_64)
-$build = "windows-x86_64"
+$build = "windows-x86"
 
 ############################### Main Script ##################################
 # Usually you don't need to change anything below here
